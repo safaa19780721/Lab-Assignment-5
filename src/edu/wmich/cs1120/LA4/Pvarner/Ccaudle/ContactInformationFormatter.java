@@ -1,6 +1,6 @@
 package edu.wmich.cs1120.LA4.Pvarner.Ccaudle;
 
 public class ContactInformationFormatter {
+	int x=0;
 	
-	System.out.printf("hi");
 }
