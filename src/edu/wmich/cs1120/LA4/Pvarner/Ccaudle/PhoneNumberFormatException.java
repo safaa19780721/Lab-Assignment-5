@@ -1,5 +1,5 @@
 package edu.wmich.cs1120.LA4.Pvarner.Ccaudle;
 
-public class PhoneNumberFormatException {
+public class PhoneNumberFormatException extends Exception{
 
 }
