@@ -1,10 +1,17 @@
 package edu.wmich.cs1120.LA4.Pvarner.Ccaudle;
 
+import java.io.FileReader;
+import java.util.Scanner;
+
 public class ContactInformationFormatter implements IContactInformationFormatter {
 
 	@Override
 	public void readContactInformation(String[] filePaths) {
 		// TODO Auto-generated method stub
+		for(int i=0; i<filePaths.length; i++) {
+			Scanner input = new Scanner(filePaths[i]);
+		}
+		
 		
 	}
 
