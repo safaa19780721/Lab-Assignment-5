@@ -21,16 +21,22 @@ public class ContactInformationFormatter implements IContactInformationFormatter
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			try {
+				formatName(div[1]);
+			} catch (NameFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			try {
-				formatPhoneNumber(div[1]);
+				formatPhoneNumber(div[2]);
 			} catch (PhoneNumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 			try {
-				formatEmail(div[2]);
+				formatEmail(div[3]);
 			} catch (EmailAddressFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
