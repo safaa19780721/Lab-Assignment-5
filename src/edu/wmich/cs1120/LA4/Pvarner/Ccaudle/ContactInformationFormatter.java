@@ -12,6 +12,8 @@ public class ContactInformationFormatter implements IContactInformationFormatter
 		String[] div;
 		String temp;
 		
+		FormatExceptionHandler handler = new FormatExceptionHandler();
+		
 		for(int i=0; i<filePaths.length; i++) {
 			temp = filePaths[i];
 			div = temp.split(" ");
@@ -19,13 +21,13 @@ public class ContactInformationFormatter implements IContactInformationFormatter
 				formatName(div[0]);
 			} catch (NameFormatException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				handler.handleNameFormatException(e);
 			}
 			try {
 				formatName(div[1]);
 			} catch (NameFormatException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				handler.handleNameFormatException(e);
 			}
 			
 			try {
@@ -86,20 +88,25 @@ public class ContactInformationFormatter implements IContactInformationFormatter
 
 	@Override
 	public void formatName(String name) throws NameFormatException {
-		// TODO Auto-generated method stub
-		 char temp[] = new char[name.length()];
-		for(int i=0; i<name.length(); i++) {
-			if(i==0) {
-				temp[i] = Character.toUpperCase(name.charAt(i));
-			}
-			else {
-				temp[i] = Character.toLowerCase(name.charAt(i));
-			}
+		
+		boolean print = true;
+		
+		if(!Character.isUpperCase(name.charAt(0))) {
+			print = false;
+			throw new NameFormatException(name);
 		}
-		for(int i=0; i<temp.length; i++) {
-			System.out.print(temp[i]);
+		
+		for(int i = 1; i<name.length(); i++) {
+			if(!Character.isLowerCase(name.charAt(0))) {
+				print = false;
+				throw new NameFormatException(name);
+			}	
 		}
-		System.out.println();
-	}
+		
+		if(print == true) {
+			System.out.println(name);
+		}
+		
 	
+}
 }
