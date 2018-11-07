@@ -7,7 +7,7 @@ public class FormatExceptionHandler implements IFormatExceptionHandler {
 
 	@Override
 	public void handleFileNotFoundException(FileNotFoundException e) {
-		System.out.println("Error, File Not Found. Please Try again.");
+		System.out.println("(The system cannot find the file specified)");
 	}
 
 	@Override
@@ -33,7 +33,20 @@ public class FormatExceptionHandler implements IFormatExceptionHandler {
 
 	@Override
 	public void handleEmailFormatException(EmailAddressFormatException e) {
-		// TODO Auto-generated method stub
+		String email = e.getEmail();
+		char temp[] = new char[email.length()];
+
+		for (int i = 0; i < email.length(); i++) {
+			if (email.charAt(i) == '@') {
+				temp[i] = email.charAt(i);
+			} else {
+				temp[i] = Character.toLowerCase(email.charAt(i));
+			}
+		}
+		for (int i = 0; i < temp.length; i++) {
+			System.out.print(temp[i]);
+		}
+		System.out.println();
 
 	}
 
